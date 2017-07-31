@@ -1,0 +1,1476 @@
+{
+  "models": {
+    "W1070": {
+      "commands":{
+        "pow":{
+          "name": "power",
+          "description": "System power",
+          "values": {
+            "on": {
+              "name": "on",
+              "description": "power on"
+            },
+            "off": {
+              "name": "off",
+              "description": "power off"
+            },
+            "?": {
+              "name": "query",
+              "description": "get Power Status"
+            }
+          }
+        },
+        "sour":{
+          "name": "source",
+          "description": "Source selection command",
+          "values": {
+            "RGB": {
+              "name": "RGB",
+              "description": "Computer/YPbPr"
+            },
+            "RGB2": {
+              "name": "RGB2",
+              "description": "Computer 2/YPbPr2"
+            },
+            "ypbr": {
+              "name": "ypbr",
+              "description": "Component"
+            },
+            "dviA": {
+              "name": "dviA",
+              "description": "DVI-A"
+            },
+            "dvid": {
+              "name": "dvid",
+              "description": "DVI-D"
+            },
+            "hdmi": {
+              "name": "hdmi",
+              "description": "HDMI"
+            },
+            "hdmi2": {
+              "name": "hdmi2",
+              "description": "HDMI 2"
+            },
+            "vid": {
+              "name": "vid",
+              "description": "Composite"
+            },
+            "svid": {
+              "name": "svid",
+              "description": "S-Video"
+            },
+            "?": {
+              "name": "query",
+              "description": "get current source"
+            }
+          }
+        },
+        "mute":{
+          "name": "mute",
+          "description": "Mute control",
+          "values": {
+            "on": {
+              "name": "on",
+              "description": "Mute on"
+            },
+            "off": {
+              "name": "off",
+              "description": "Mute off"
+            },
+            "?": {
+              "name": "query",
+              "description": "get Mute Status"
+            }
+          }
+        },
+        "vol":{
+          "name": "volume",
+          "description": "Volume control",
+          "values": {
+            "+": {
+              "name": "up",
+              "description": "Volume up"
+            },
+            "-": {
+              "name": "down",
+              "description": "Volume down"
+            },
+            "?": {
+              "name": "query",
+              "description": "get Volume Status"
+            }
+          }
+        },
+        "audiosour":{
+          "name": "audio-source",
+          "description": "Audio source select",
+          "values": {
+            "off": {
+              "name": "off",
+              "description": "Audio pass Through off"
+            },
+            "RGB": {
+              "name": "RGB",
+              "description": "Audio Computer 1"
+            },
+            "RGB2": {
+              "name": "RGB2",
+              "description": "Audio Computer 2"
+            },
+            "vid": {
+              "name": "vid",
+              "description": "Audio Video/S-Video"
+            },
+            "ypbr": {
+              "name": "ypbr",
+              "description": "Audio Component"
+            },
+            "hdmi": {
+              "name": "hdmi",
+              "description": "Audio HDMI"
+            },
+            "hdmi2": {
+              "name": "hdmi2",
+              "description": "Audio HDMI 2"
+            },
+            "?": {
+              "name": "query",
+              "description": "get Audio pass Status"
+            }
+          }
+        },
+        "appmod":{
+          "name": "picture-mode",
+          "description": "Picture mode control",
+          "values": {
+            "dynamic": {
+              "name": "dynamic",
+              "description": "Dynamic"
+            },
+            "preset": {
+              "name": "preset",
+              "description": "Presentation"
+            },
+            "srgb": {
+              "name": "srgb",
+              "description": "sRGB"
+            },
+            "bright": {
+              "name": "bright",
+              "description": "Bright"
+            },
+            "livingroom": {
+              "name": "livingroom",
+              "description": "Living room"
+            },
+            "game": {
+              "name": "game",
+              "description": "Game"
+            },
+            "cine": {
+              "name": "cine",
+              "description": "Cinema"
+            },
+            "std": {
+              "name": "std",
+              "description": "Standart"
+            },
+            "user1": {
+              "name": "user1",
+              "description": "User 1"
+            },
+            "user2": {
+              "name": "user2",
+              "description": "User 2"
+            },
+            "user3": {
+              "name": "user3",
+              "description": "User 3"
+            },
+            "?": {
+              "name": "query",
+              "description": "get Picture Mode"
+            }
+          }
+        },
+        "con":{
+          "name": "contrast",
+          "description": "Picture contrast",
+          "values": {
+            "+": {
+              "name": "up",
+              "description": "Contrast up"
+            },
+            "-": {
+              "name": "down",
+              "description": "Contrast down"
+            },
+            "?": {
+              "name": "query",
+              "description": "get Contrast value"
+            }
+          }
+        },
+        "bri":{
+          "name": "brightness",
+          "description": "Picture Brightness",
+          "values": {
+            "+": {
+              "name": "up",
+              "description": "Brightness up"
+            },
+            "-": {
+              "name": "down",
+              "description": "Brightness down"
+            },
+            "?": {
+              "name": "query",
+              "description": "get Brightness value"
+            }
+          }
+        },
+        "color":{
+          "name": "color",
+          "description": "Picture Color",
+          "values": {
+            "+": {
+              "name": "up",
+              "description": "Color up"
+            },
+            "-": {
+              "name": "down",
+              "description": "Color down"
+            },
+            "?": {
+              "name": "query",
+              "description": "get Color value"
+            }
+          }
+        },
+        "sharp":{
+          "name": "sharpness",
+          "description": "Picture Sharpness",
+          "values": {
+            "+": {
+              "name": "up",
+              "description": "Sharpness up"
+            },
+            "-": {
+              "name": "down",
+              "description": "Sharpness down"
+            },
+            "?": {
+              "name": "query",
+              "description": "get Sharpness value"
+            }
+          }
+        },
+        "asp":{
+          "name": "aspect",
+          "description": "Aspect Ratio",
+          "values": {
+            "4:3": {
+              "name": "4:3",
+              "description": "Aspect 4:3"
+            },
+            "16:9": {
+              "name": "16:9",
+              "description": "Aspect 16:9"
+            },
+            "16:10": {
+              "name": "16:10",
+              "description": "Aspect 16:10"
+            },
+            "AUTO": {
+              "name": "AUTO",
+              "description": "Aspect Auto"
+            },
+            "REAL": {
+              "name": "REAL",
+              "description": "Aspect Real"
+            },
+            "LBOX": {
+              "name": "LBOX",
+              "description": "Aspect Letterbox"
+            },
+            "WIDE": {
+              "name": "WIDE",
+              "description": "Aspect Wide"
+            },
+            "ANAM": {
+              "name": "ANAM",
+              "description": "Aspect Anamorphic"
+            },
+            "?": {
+              "name": "query",
+              "description": "get Aspect Status"
+            }
+          }
+        },
+        "zoomi":{
+          "name": "zoom-in",
+          "description": "Digital Zoom In"
+        },
+        "zoomo":{
+          "name": "zoom-out",
+          "description": "Digital Zoom Out"
+        },
+        "auto":{
+          "name": "picture-auto",
+          "description": "Picture Setting Auto"
+        },
+        "baud":{
+          "name": "baud",
+          "description": "Baud Rate Setting",
+          "values": {
+            "2400": {
+              "name": "2400",
+              "description": "Baud Rate 2400"
+            },
+            "4800": {
+              "name": "4800",
+              "description": "Baud Rate 4800"
+            },
+            "9600": {
+              "name": "9600",
+              "description": "Baud Rate 9600"
+            },
+            "14400": {
+              "name": "14400",
+              "description": "Baud Rate 14400"
+            },
+            "19200": {
+              "name": "19200",
+              "description": "Baud Rate 19200"
+            },
+            "38400": {
+              "name": "38400",
+              "description": "Baud Rate 38400"
+            },
+            "57600": {
+              "name": "57600",
+              "description": "Baud Rate 57600"
+            },
+            "115200": {
+              "name": "115200",
+              "description": "Baud Rate 115200"
+            },
+            "?": {
+              "name": "query",
+              "description": "get Current Baud Rate"
+            }
+          }
+        },
+        "ltim":{
+          "name": "lamp-hour",
+          "description": "Lamp Hour",
+          "values": {
+            "?": {
+              "name": "query",
+              "description": "get Lamp Hour"
+            }
+          }
+        },
+        "lampm":{
+          "name": "lamp-mode",
+          "description": "Lamp mode",
+          "values": {
+            "lnor": {
+              "name": "lnor",
+              "description": "Normal mode"
+            },
+            "eco": {
+              "name": "eco",
+              "description": "Eco mode"
+            },
+            "seco": {
+              "name": "seco",
+              "description": "Smart Eco mode"
+            },
+            "?": {
+              "name": "query",
+              "description": "get Lamp Mode Status"
+            }
+          }
+        },
+        "modelname":{
+          "name": "modelname",
+          "description": "model name",
+          "values": {
+            "?": {
+              "name": "query",
+              "description": "get Model Name"
+            }
+          }
+        },
+        "blank":{
+          "name": "blank",
+          "description": "Blank control",
+          "values": {
+            "on": {
+              "name": "on",
+              "description": "Blank on"
+            },
+            "off": {
+              "name": "off",
+              "description": "Blank off"
+            },
+            "?": {
+              "name": "query",
+              "description": "get Blank Status"
+            }
+          }
+        },
+        "freeze":{
+          "name": "freeze",
+          "description": "Freeze control",
+          "values": {
+            "on": {
+              "name": "on",
+              "description": "Freeze on"
+            },
+            "off": {
+              "name": "off",
+              "description": "Freeze off"
+            },
+            "?": {
+              "name": "query",
+              "description": "get Freeze Status"
+            }
+          }
+        },
+        "menu":{
+          "name": "menu",
+          "description": "menu control",
+          "values": {
+            "on": {
+              "name": "on",
+              "description": "Menu on"
+            },
+            "off": {
+              "name": "off",
+              "description": "Menu off"
+            }
+          }
+        },
+        "up":{
+          "name": "up",
+          "description": "up control"
+        },
+        "down":{
+          "name": "down",
+          "description": "down control"
+        },
+        "right":{
+          "name": "right",
+          "description": "right control"
+        },
+        "left":{
+          "name": "left",
+          "description": "left control"
+        },
+        "enter":{
+          "name": "enter",
+          "description": "enter control"
+        }
+      }
+    },
+    "W1080": {
+      "commands":{
+        "pow":{
+          "name": "power",
+          "description": "System power",
+          "values": {
+            "on": {
+              "name": "on",
+              "description": "power on"
+            },
+            "off": {
+              "name": "off",
+              "description": "power off"
+            },
+            "?": {
+              "name": "query",
+              "description": "get Power Status"
+            }
+          }
+        },
+        "sour":{
+          "name": "source",
+          "description": "Source selection command",
+          "values": {
+            "RGB": {
+              "name": "RGB",
+              "description": "Computer/YPbPr"
+            },
+            "RGB2": {
+              "name": "RGB2",
+              "description": "Computer 2/YPbPr2"
+            },
+            "ypbr": {
+              "name": "ypbr",
+              "description": "Component"
+            },
+            "dviA": {
+              "name": "dviA",
+              "description": "DVI-A"
+            },
+            "dvid": {
+              "name": "dvid",
+              "description": "DVI-D"
+            },
+            "hdmi": {
+              "name": "hdmi",
+              "description": "HDMI"
+            },
+            "hdmi2": {
+              "name": "hdmi2",
+              "description": "HDMI 2"
+            },
+            "vid": {
+              "name": "vid",
+              "description": "Composite"
+            },
+            "svid": {
+              "name": "svid",
+              "description": "S-Video"
+            },
+            "?": {
+              "name": "query",
+              "description": "get current source"
+            }
+          }
+        },
+        "mute":{
+          "name": "mute",
+          "description": "Mute control",
+          "values": {
+            "on": {
+              "name": "on",
+              "description": "Mute on"
+            },
+            "off": {
+              "name": "off",
+              "description": "Mute off"
+            },
+            "?": {
+              "name": "query",
+              "description": "get Mute Status"
+            }
+          }
+        },
+        "vol":{
+          "name": "volume",
+          "description": "Volume control",
+          "values": {
+            "+": {
+              "name": "up",
+              "description": "Volume up"
+            },
+            "-": {
+              "name": "down",
+              "description": "Volume down"
+            },
+            "?": {
+              "name": "query",
+              "description": "get Volume Status"
+            }
+          }
+        },
+        "audiosour":{
+          "name": "audio-source",
+          "description": "Audio source select",
+          "values": {
+            "off": {
+              "name": "off",
+              "description": "Audio pass Through off"
+            },
+            "RGB": {
+              "name": "RGB",
+              "description": "Audio Computer 1"
+            },
+            "RGB2": {
+              "name": "RGB2",
+              "description": "Audio Computer 2"
+            },
+            "vid": {
+              "name": "vid",
+              "description": "Audio Video/S-Video"
+            },
+            "ypbr": {
+              "name": "ypbr",
+              "description": "Audio Component"
+            },
+            "hdmi": {
+              "name": "hdmi",
+              "description": "Audio HDMI"
+            },
+            "hdmi2": {
+              "name": "hdmi2",
+              "description": "Audio HDMI 2"
+            },
+            "?": {
+              "name": "query",
+              "description": "get Audio pass Status"
+            }
+          }
+        },
+        "appmod":{
+          "name": "picture-mode",
+          "description": "Picture mode control",
+          "values": {
+            "dynamic": {
+              "name": "dynamic",
+              "description": "Dynamic"
+            },
+            "preset": {
+              "name": "preset",
+              "description": "Presentation"
+            },
+            "srgb": {
+              "name": "srgb",
+              "description": "sRGB"
+            },
+            "bright": {
+              "name": "bright",
+              "description": "Bright"
+            },
+            "livingroom": {
+              "name": "livingroom",
+              "description": "Living room"
+            },
+            "game": {
+              "name": "game",
+              "description": "Game"
+            },
+            "cine": {
+              "name": "cine",
+              "description": "Cinema"
+            },
+            "std": {
+              "name": "std",
+              "description": "Standart"
+            },
+            "user1": {
+              "name": "user1",
+              "description": "User 1"
+            },
+            "user2": {
+              "name": "user2",
+              "description": "User 2"
+            },
+            "user3": {
+              "name": "user3",
+              "description": "User 3"
+            },
+            "?": {
+              "name": "query",
+              "description": "get Picture Mode"
+            }
+          }
+        },
+        "con":{
+          "name": "contrast",
+          "description": "Picture contrast",
+          "values": {
+            "+": {
+              "name": "up",
+              "description": "Contrast up"
+            },
+            "-": {
+              "name": "down",
+              "description": "Contrast down"
+            },
+            "?": {
+              "name": "query",
+              "description": "get Contrast value"
+            }
+          }
+        },
+        "bri":{
+          "name": "brightness",
+          "description": "Picture Brightness",
+          "values": {
+            "+": {
+              "name": "up",
+              "description": "Brightness up"
+            },
+            "-": {
+              "name": "down",
+              "description": "Brightness down"
+            },
+            "?": {
+              "name": "query",
+              "description": "get Brightness value"
+            }
+          }
+        },
+        "color":{
+          "name": "color",
+          "description": "Picture Color",
+          "values": {
+            "+": {
+              "name": "up",
+              "description": "Color up"
+            },
+            "-": {
+              "name": "down",
+              "description": "Color down"
+            },
+            "?": {
+              "name": "query",
+              "description": "get Color value"
+            }
+          }
+        },
+        "sharp":{
+          "name": "sharpness",
+          "description": "Picture Sharpness",
+          "values": {
+            "+": {
+              "name": "up",
+              "description": "Sharpness up"
+            },
+            "-": {
+              "name": "down",
+              "description": "Sharpness down"
+            },
+            "?": {
+              "name": "query",
+              "description": "get Sharpness value"
+            }
+          }
+        },
+        "asp":{
+          "name": "aspect",
+          "description": "Aspect Ratio",
+          "values": {
+            "4:3": {
+              "name": "4:3",
+              "description": "Aspect 4:3"
+            },
+            "16:9": {
+              "name": "16:9",
+              "description": "Aspect 16:9"
+            },
+            "16:10": {
+              "name": "16:10",
+              "description": "Aspect 16:10"
+            },
+            "AUTO": {
+              "name": "AUTO",
+              "description": "Aspect Auto"
+            },
+            "REAL": {
+              "name": "REAL",
+              "description": "Aspect Real"
+            },
+            "LBOX": {
+              "name": "LBOX",
+              "description": "Aspect Letterbox"
+            },
+            "WIDE": {
+              "name": "WIDE",
+              "description": "Aspect Wide"
+            },
+            "ANAM": {
+              "name": "ANAM",
+              "description": "Aspect Anamorphic"
+            },
+            "?": {
+              "name": "query",
+              "description": "get Aspect Status"
+            }
+          }
+        },
+        "zoomi":{
+          "name": "zoom-in",
+          "description": "Digital Zoom In"
+        },
+        "zoomo":{
+          "name": "zoom-out",
+          "description": "Digital Zoom Out"
+        },
+        "auto":{
+          "name": "picture-auto",
+          "description": "Picture Setting Auto"
+        },
+        "baud":{
+          "name": "baud",
+          "description": "Baud Rate Setting",
+          "values": {
+            "2400": {
+              "name": "2400",
+              "description": "Baud Rate 2400"
+            },
+            "4800": {
+              "name": "4800",
+              "description": "Baud Rate 4800"
+            },
+            "9600": {
+              "name": "9600",
+              "description": "Baud Rate 9600"
+            },
+            "14400": {
+              "name": "14400",
+              "description": "Baud Rate 14400"
+            },
+            "19200": {
+              "name": "19200",
+              "description": "Baud Rate 19200"
+            },
+            "38400": {
+              "name": "38400",
+              "description": "Baud Rate 38400"
+            },
+            "57600": {
+              "name": "57600",
+              "description": "Baud Rate 57600"
+            },
+            "115200": {
+              "name": "115200",
+              "description": "Baud Rate 115200"
+            },
+            "?": {
+              "name": "query",
+              "description": "get Current Baud Rate"
+            }
+          }
+        },
+        "ltim":{
+          "name": "lamp-hour",
+          "description": "Lamp Hour",
+          "values": {
+            "?": {
+              "name": "query",
+              "description": "get Lamp Hour"
+            }
+          }
+        },
+        "lampm":{
+          "name": "lamp-mode",
+          "description": "Lamp mode",
+          "values": {
+            "lnor": {
+              "name": "lnor",
+              "description": "Normal mode"
+            },
+            "eco": {
+              "name": "eco",
+              "description": "Eco mode"
+            },
+            "seco": {
+              "name": "seco",
+              "description": "Smart Eco mode"
+            },
+            "?": {
+              "name": "query",
+              "description": "get Lamp Mode Status"
+            }
+          }
+        },
+        "modelname":{
+          "name": "modelname",
+          "description": "model name",
+          "values": {
+            "?": {
+              "name": "query",
+              "description": "get Model Name"
+            }
+          }
+        },
+        "blank":{
+          "name": "blank",
+          "description": "Blank control",
+          "values": {
+            "on": {
+              "name": "on",
+              "description": "Blank on"
+            },
+            "off": {
+              "name": "off",
+              "description": "Blank off"
+            },
+            "?": {
+              "name": "query",
+              "description": "get Blank Status"
+            }
+          }
+        },
+        "freeze":{
+          "name": "freeze",
+          "description": "Freeze control",
+          "values": {
+            "on": {
+              "name": "on",
+              "description": "Freeze on"
+            },
+            "off": {
+              "name": "off",
+              "description": "Freeze off"
+            },
+            "?": {
+              "name": "query",
+              "description": "get Freeze Status"
+            }
+          }
+        },
+        "menu":{
+          "name": "menu",
+          "description": "menu control",
+          "values": {
+            "on": {
+              "name": "on",
+              "description": "Menu on"
+            },
+            "off": {
+              "name": "off",
+              "description": "Menu off"
+            }
+          }
+        },
+        "up":{
+          "name": "up",
+          "description": "up control"
+        },
+        "down":{
+          "name": "down",
+          "description": "down control"
+        },
+        "right":{
+          "name": "right",
+          "description": "right control"
+        },
+        "left":{
+          "name": "left",
+          "description": "left control"
+        },
+        "enter":{
+          "name": "enter",
+          "description": "enter control"
+        }
+      }
+    },
+    "W1200": {
+      "commands":{
+        "pow":{
+          "name": "power",
+          "description": "System power",
+          "values": {
+            "on": {
+              "name": "on",
+              "description": "power on"
+            },
+            "off": {
+              "name": "off",
+              "description": "power off"
+            },
+            "?": {
+              "name": "query",
+              "description": "get Power Status"
+            }
+          }
+        },
+        "sour":{
+          "name": "source",
+          "description": "Source selection command",
+          "values": {
+            "RGB": {
+              "name": "RGB",
+              "description": "Computer/YPbPr"
+            },
+            "RGB2": {
+              "name": "RGB2",
+              "description": "Computer 2/YPbPr2"
+            },
+            "ypbr": {
+              "name": "ypbr",
+              "description": "Component"
+            },
+            "dviA": {
+              "name": "dviA",
+              "description": "DVI-A"
+            },
+            "dvid": {
+              "name": "dvid",
+              "description": "DVI-D"
+            },
+            "hdmi": {
+              "name": "hdmi",
+              "description": "HDMI"
+            },
+            "hdmi2": {
+              "name": "hdmi2",
+              "description": "HDMI 2"
+            },
+            "vid": {
+              "name": "vid",
+              "description": "Composite"
+            },
+            "svid": {
+              "name": "svid",
+              "description": "S-Video"
+            },
+            "?": {
+              "name": "query",
+              "description": "get current source"
+            }
+          }
+        },
+        "mute":{
+          "name": "mute",
+          "description": "Mute control",
+          "values": {
+            "on": {
+              "name": "on",
+              "description": "Mute on"
+            },
+            "off": {
+              "name": "off",
+              "description": "Mute off"
+            },
+            "?": {
+              "name": "query",
+              "description": "get Mute Status"
+            }
+          }
+        },
+        "vol":{
+          "name": "volume",
+          "description": "Volume control",
+          "values": {
+            "+": {
+              "name": "up",
+              "description": "Volume up"
+            },
+            "-": {
+              "name": "down",
+              "description": "Volume down"
+            },
+            "?": {
+              "name": "query",
+              "description": "get Volume Status"
+            }
+          }
+        },
+        "audiosour":{
+          "name": "audio-source",
+          "description": "Audio source select",
+          "values": {
+            "off": {
+              "name": "off",
+              "description": "Audio pass Through off"
+            },
+            "RGB": {
+              "name": "RGB",
+              "description": "Audio Computer 1"
+            },
+            "RGB2": {
+              "name": "RGB2",
+              "description": "Audio Computer 2"
+            },
+            "vid": {
+              "name": "vid",
+              "description": "Audio Video/S-Video"
+            },
+            "ypbr": {
+              "name": "ypbr",
+              "description": "Audio Component"
+            },
+            "hdmi": {
+              "name": "hdmi",
+              "description": "Audio HDMI"
+            },
+            "hdmi2": {
+              "name": "hdmi2",
+              "description": "Audio HDMI 2"
+            },
+            "?": {
+              "name": "query",
+              "description": "get Audio pass Status"
+            }
+          }
+        },
+        "appmod":{
+          "name": "picture-mode",
+          "description": "Picture mode control",
+          "values": {
+            "dynamic": {
+              "name": "dynamic",
+              "description": "Dynamic"
+            },
+            "preset": {
+              "name": "preset",
+              "description": "Presentation"
+            },
+            "srgb": {
+              "name": "srgb",
+              "description": "sRGB"
+            },
+            "bright": {
+              "name": "bright",
+              "description": "Bright"
+            },
+            "livingroom": {
+              "name": "livingroom",
+              "description": "Living room"
+            },
+            "game": {
+              "name": "game",
+              "description": "Game"
+            },
+            "cine": {
+              "name": "cine",
+              "description": "Cinema"
+            },
+            "std": {
+              "name": "std",
+              "description": "Standart"
+            },
+            "user1": {
+              "name": "user1",
+              "description": "User 1"
+            },
+            "user2": {
+              "name": "user2",
+              "description": "User 2"
+            },
+            "user3": {
+              "name": "user3",
+              "description": "User 3"
+            },
+            "?": {
+              "name": "query",
+              "description": "get Picture Mode"
+            }
+          }
+        },
+        "con":{
+          "name": "contrast",
+          "description": "Picture contrast",
+          "values": {
+            "+": {
+              "name": "up",
+              "description": "Contrast up"
+            },
+            "-": {
+              "name": "down",
+              "description": "Contrast down"
+            },
+            "?": {
+              "name": "query",
+              "description": "get Contrast value"
+            }
+          }
+        },
+        "bri":{
+          "name": "brightness",
+          "description": "Picture Brightness",
+          "values": {
+            "+": {
+              "name": "up",
+              "description": "Brightness up"
+            },
+            "-": {
+              "name": "down",
+              "description": "Brightness down"
+            },
+            "?": {
+              "name": "query",
+              "description": "get Brightness value"
+            }
+          }
+        },
+        "color":{
+          "name": "color",
+          "description": "Picture Color",
+          "values": {
+            "+": {
+              "name": "up",
+              "description": "Color up"
+            },
+            "-": {
+              "name": "down",
+              "description": "Color down"
+            },
+            "?": {
+              "name": "query",
+              "description": "get Color value"
+            }
+          }
+        },
+        "sharp":{
+          "name": "sharpness",
+          "description": "Picture Sharpness",
+          "values": {
+            "+": {
+              "name": "up",
+              "description": "Sharpness up"
+            },
+            "-": {
+              "name": "down",
+              "description": "Sharpness down"
+            },
+            "?": {
+              "name": "query",
+              "description": "get Sharpness value"
+            }
+          }
+        },
+        "asp":{
+          "name": "aspect",
+          "description": "Aspect Ratio",
+          "values": {
+            "4:3": {
+              "name": "4:3",
+              "description": "Aspect 4:3"
+            },
+            "16:9": {
+              "name": "16:9",
+              "description": "Aspect 16:9"
+            },
+            "16:10": {
+              "name": "16:10",
+              "description": "Aspect 16:10"
+            },
+            "AUTO": {
+              "name": "AUTO",
+              "description": "Aspect Auto"
+            },
+            "REAL": {
+              "name": "REAL",
+              "description": "Aspect Real"
+            },
+            "LBOX": {
+              "name": "LBOX",
+              "description": "Aspect Letterbox"
+            },
+            "WIDE": {
+              "name": "WIDE",
+              "description": "Aspect Wide"
+            },
+            "ANAM": {
+              "name": "ANAM",
+              "description": "Aspect Anamorphic"
+            },
+            "?": {
+              "name": "query",
+              "description": "get Aspect Status"
+            }
+          }
+        },
+        "zoomi":{
+          "name": "zoom-in",
+          "description": "Digital Zoom In"
+        },
+        "zoomo":{
+          "name": "zoom-out",
+          "description": "Digital Zoom Out"
+        },
+        "auto":{
+          "name": "picture-auto",
+          "description": "Picture Setting Auto"
+        },
+        "baud":{
+          "name": "baud",
+          "description": "Baud Rate Setting",
+          "values": {
+            "2400": {
+              "name": "2400",
+              "description": "Baud Rate 2400"
+            },
+            "4800": {
+              "name": "4800",
+              "description": "Baud Rate 4800"
+            },
+            "9600": {
+              "name": "9600",
+              "description": "Baud Rate 9600"
+            },
+            "14400": {
+              "name": "14400",
+              "description": "Baud Rate 14400"
+            },
+            "19200": {
+              "name": "19200",
+              "description": "Baud Rate 19200"
+            },
+            "38400": {
+              "name": "38400",
+              "description": "Baud Rate 38400"
+            },
+            "57600": {
+              "name": "57600",
+              "description": "Baud Rate 57600"
+            },
+            "115200": {
+              "name": "115200",
+              "description": "Baud Rate 115200"
+            },
+            "?": {
+              "name": "query",
+              "description": "get Current Baud Rate"
+            }
+          }
+        },
+        "ltim":{
+          "name": "lamp-hour",
+          "description": "Lamp Hour",
+          "values": {
+            "?": {
+              "name": "query",
+              "description": "get Lamp Hour"
+            }
+          }
+        },
+        "lampm":{
+          "name": "lamp-mode",
+          "description": "Lamp mode",
+          "values": {
+            "lnor": {
+              "name": "lnor",
+              "description": "Normal mode"
+            },
+            "eco": {
+              "name": "eco",
+              "description": "Eco mode"
+            },
+            "seco": {
+              "name": "seco",
+              "description": "Smart Eco mode"
+            },
+            "?": {
+              "name": "query",
+              "description": "get Lamp Mode Status"
+            }
+          }
+        },
+        "modelname":{
+          "name": "modelname",
+          "description": "model name",
+          "values": {
+            "?": {
+              "name": "query",
+              "description": "get Model Name"
+            }
+          }
+        },
+        "blank":{
+          "name": "blank",
+          "description": "Blank control",
+          "values": {
+            "on": {
+              "name": "on",
+              "description": "Blank on"
+            },
+            "off": {
+              "name": "off",
+              "description": "Blank off"
+            },
+            "?": {
+              "name": "query",
+              "description": "get Blank Status"
+            }
+          }
+        },
+        "freeze":{
+          "name": "freeze",
+          "description": "Freeze control",
+          "values": {
+            "on": {
+              "name": "on",
+              "description": "Freeze on"
+            },
+            "off": {
+              "name": "off",
+              "description": "Freeze off"
+            },
+            "?": {
+              "name": "query",
+              "description": "get Freeze Status"
+            }
+          }
+        },
+        "menu":{
+          "name": "menu",
+          "description": "Menu control",
+          "values": {
+            "on": {
+              "name": "on",
+              "description": "Menu on"
+            },
+            "off": {
+              "name": "off",
+              "description": "Menu off"
+            }
+          }
+        },
+        "up":{
+          "name": "up",
+          "description": "Up control"
+        },
+        "down":{
+          "name": "down",
+          "description": "Down control"
+        },
+        "right":{
+          "name": "right",
+          "description": "Right control"
+        },
+        "left":{
+          "name": "left",
+          "description": "Left control"
+        },
+        "enter":{
+          "name": "enter",
+          "description": "Enter control"
+        }
+      }
+    }
+  },
+  "command_mapping":{
+    "up": "up",
+    "down": "down",
+    "right": "right",
+    "left": "left",
+    "enter": "enter",
+    "menu": "menu",
+    "power": "pow",
+    "source": "sour",
+    "mute": "mute",
+    "volume": "vol",
+    "mic-vol-status": "micvol",
+    "audio-source": "audiosour",
+    "picture-mode": "appmode",
+    "contrast": "con",
+    "brightness": "bri",
+    "color": "color",
+    "sharpness": "sharp",
+    "color-temperature": "ct",
+    "aspect": "asp",
+    "brilliant-color": "BC",
+    "qas": "QAS",
+    "projector-position": "pp",
+    "direct-power": "directpower",
+    "standby-network": "standbynet",
+    "standby-microphone": "standbymic",
+    "standby-monitor": "standbymnt",
+    "baud": "baud",
+    "lamp-hour": "ltim",
+    "lamp2-hour": "ltim2",
+    "lamp-mode": "lampm",
+    "modelname": "modelname",
+    "blank": "blank",
+    "freeze": "freeze",
+    "3d-sync": "3d",
+    "remote-receiver": "rr",
+    "instant-on": "ins",
+    "lamp-saver-mode": "lpsaver",
+    "projection-log": "prjlogincode",
+    "broadcasting": "broadcasting",
+    "amx-device-discovery": "amxdd",
+    "mac-address": "macaddr",
+    "high-altitude": "Highaltitude"
+  }
+}

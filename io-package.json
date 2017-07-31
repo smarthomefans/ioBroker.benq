@@ -1,0 +1,87 @@
+{
+    "common": {
+        "name": "benq",
+        "version": "0.0.6",
+        "news": {
+            "0.0.6": {
+                "en": "Change README",
+                "de": "Change README",
+                "ru": "Change README",
+                "pt": "Change README",
+                "fr": "Change README",
+                "nl": "Change README"
+            },
+            "0.0.4": {
+                "en": "alfa version",
+                "de": "alfa version",
+                "ru": "alfa version",
+                "pt": "alfa version",
+                "fr": "alfa version",
+                "nl": "alfa version"
+            },
+            "0.0.1": {
+                "en": "initial adapter",
+                "de": "Initiale Version",
+                "ru": "Первоначальный адаптер",
+                "pt": "Versão inicial",
+                "fr": "Version initiale",
+                "nl": "Eerste release"
+            }
+        },
+        "title": "BenQ projector",
+        "desc": {
+            "en": "ioBroker BenQ projector Adapter",
+            "de": "ioBroker BenQ projector Adapter",
+            "ru": "BenQ projector драйвер",
+            "pt": "Modelo de adaptador para o ioBroker",
+            "fr": "ioBroker adaptateur modèle",
+            "nl": "ioBroker BenQ Adapter"
+        },
+        "platform": "Javascript/Node.js",
+        "mode": "daemon",
+        "icon": "benq.png",
+        "enabled": false,
+        "extIcon": "https://raw.githubusercontent.com/instalator/iobroker.benq/master/admin/benq.png",
+        "keywords": ["benq projector"],
+        "readme": "https://github.com/instalator/iobroker.benq/blob/master/README.md",
+        "loglevel": "info",
+        "type": "hardware"
+    },
+    "native": {
+        "host": "127.0.0.1",
+        "port": 23
+    },
+    "objects": [
+
+    ],
+    "instanceObjects": [
+        {
+            "_id": "info.connection",
+            "type": "state",
+            "common": {
+                "role": "indicator.connected",
+                "name": "If connected to BenQ projector",
+                "type": "boolean",
+                "read": true,
+                "write": false,
+                "def": false
+            },
+            "native": {
+            }
+        },
+        {
+            "_id": "power",
+            "type": "state",
+            "common": {
+                "role": "button.power",
+                "name": "Controlling power",
+                "type": "boolean",
+                "read": false,
+                "write": true,
+                "def": false
+            },
+            "native": {
+            }
+        }
+    ]
+}

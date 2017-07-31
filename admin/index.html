@@ -1,0 +1,85 @@
+<html>
+<link rel="stylesheet" type="text/css" href="../../lib/css/themes/jquery-ui/redmond/jquery-ui.min.css"/>
+<script type="text/javascript" src="../../lib/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="../../socket.io/socket.io.js"></script>
+<script type="text/javascript" src="../../lib/js/jquery-ui-1.10.3.full.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../../css/adapter.css"/>
+<script type="text/javascript" src="../../js/translate.js"></script>
+<script type="text/javascript" src="../../js/adapter-settings.js"></script>
+<script type="text/javascript" src="words.js"></script>
+
+<script type="text/javascript">
+    systemDictionary = {
+        "mpd adapter settings":     {"en": "BenQ adapter settings", "de": "BenQ adapter settings", "ru": "Настройки драйвера BenQ"},
+        "host":                     {"en": "host:", "de": "host:", "ru": "host:"},
+        "port":                     {"en": "port:", "de": "port:", "ru": "port:"},
+        "model":                    {"en": "model:", "de": "model:", "ru": "model:"},
+        "Select Option":            {"en": "Select model", "de": "Select model", "ru": "Выберите модель"},
+        "on save adapter restarts with new config immediately": {
+            "de": "Beim Speichern von Einstellungen der Adapter wird sofort neu gestartet.",
+            "ru": "Сразу после сохранения настроек драйвер перезапуститься с новыми значениями"
+        }
+    };
+
+    function load(settings, onChange) {
+        // example: select elements with id=key and class=value and insert value
+        for (var key in settings) {
+            // example: select elements with id=key and class=value and insert value
+            if ($('#' + key + '.value').attr('type') == 'checkbox') {
+                $('#' + key + '.value').prop('checked', settings[key]).change(function () {
+                    onChange();
+                });
+            } else {
+                $('#' + key + '.value').val(settings[key]).change(function () {
+                    onChange();
+                }).keyup(function () {
+                    $(this).trigger('change');
+                });
+            }
+        }
+        var obj = {};
+        $.getJSON( "commands.json", function( data ) {
+            if(data){
+                for (key in data.models) {
+                    //console.log(JSON.stringify(key));
+                    $('#model_options').append($("<option>").attr('value', key).text(key));
+                }
+                $("select option[value=" + settings.model_options + "]").attr('selected', 'true').text(settings.model_options);
+                onChange();
+            }
+        });
+
+        onChange(false);
+    }
+
+    function save(callback) {
+        var obj = {};
+        $('.value').each(function () {
+            var $this = $(this);
+            obj[$this.attr('id')] = $this.val();
+        });
+        callback(obj);
+    }
+
+</script>
+
+<div id="adapter-container">
+    <table><tr>
+        <td><img src="benq.png"/></td>
+    </tr></table>
+    <h4 class="translate">BenQ adapter settings</h4>
+    <table>
+        <tr><td class="translate">host</td><td> <input class="value" id="host"/><br></tr>
+        <tr><td  class="translate">port</td><td> <input class="value" id="port"/><br></tr>
+        <tr><td  class="translate">model</td>
+            <td>
+                <select id="model_options" class="value">
+                    <option value="" class="translate">Select Option</option>
+                </select>
+            </td>
+        </tr>
+    </table>
+    <p class="translate">on save adapter restarts with new config immediately</p>
+</div>
+
+</html>
