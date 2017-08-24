@@ -18,3 +18,4 @@ You will also need an Ethernet Shield W5100 or W5500 and an RS232 to TTL convert
 
 ## Support
 Supported models: W1200, W1070, W1080 to be...
+
