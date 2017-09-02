@@ -5,11 +5,10 @@ var adapter = utils.adapter('benq');
 var async = require('async');
 
 var net = require('net');
-var benq;
 var benq_commands = require(__dirname + '/admin/commands.json'),
     COMMANDS = benq_commands.models,
     COMMAND_MAPPINGS = benq_commands.command_mapping;
-var connection = false, query_power, rct, buffer = '';
+var connection = false, benq, query_power, rct, buffer = '';
 var permis = false,
     permis_get_cmd = false,
     states = {},
