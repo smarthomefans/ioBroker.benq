@@ -111,6 +111,7 @@ adapter.on('ready', function () {
 
 
 function connect(cb){
+    var msg = '';
     var port = adapter.config.port ? adapter.config.port : 23;
     var host = adapter.config.host ? adapter.config.host : '192.168.1.53';
     adapter.log.debug('BenQ ' + adapter.config.model_options + ' connect to: ' + host + ':' + port);
@@ -129,6 +130,58 @@ function connect(cb){
         //get_commands();
         if(cb){cb();}
     });
+    benq.on('data', function(chunk) {
+        buffer += chunk.toString();
+        //adapter.log.error('Received: ' + message);
+        if (buffer.length > 50){
+            buffer = '';
+            benq.write('\r');
+        }
+        if (((~buffer.indexOf('\r\n>\u0000\r')) && buffer.length < 6) || ~buffer.indexOf('\r\n>\u0000\r\r\n>\u0000\r\r\n>\u0000')){
+            adapter.log.debug('Set to zero. Length:' + buffer.length);
+            benq.write('\r');
+            buffer = '';
+        }
+        if(chunk.toString() == '\r'){
+            msg = buffer.split('*');
+            if(msg){
+                for (var i = 0; i < msg.length; i++) {
+                    if(msg[i].length > 5 && msg[i].charAt(msg[i].indexOf('=')+1) !== '?'){
+                        msg = msg[i].substring(0, msg[i].indexOf('\r'));
+                        msg = msg.replace('#', '');
+                    }
+                }
+            }
+            if(~buffer.indexOf('Illegal format')){
+                msg = 'Illegal format';
+            }
+            if(~buffer.indexOf('Unsupported item')){
+                msg = 'Unsupported item';
+            }
+            if(~buffer.indexOf('Block item')){
+                msg = 'Block item';
+            }
+            if(~buffer.indexOf('VOL')){
+                msg = 'VOL';
+            }
+            if((msg.length > 5 && msg.charAt(msg.indexOf('=')+1) !== '?') || msg == 'VOL'){
+                adapter.log.debug('Received message:' + msg);
+                parse_command(msg);
+            }
+            buffer = '';
+        }
+    });
+
+    benq.on('error', function(err) {
+        adapter.log.error("BenQ: " + err);
+        _connection(false);
+    });
+
+    benq.on('close', function(exception) {
+        adapter.log.info('BenQ disconnected');
+        _connection(false);
+        reconnect();
+    });
 }
 
 function reconnect(t, cb){
@@ -141,63 +194,8 @@ function reconnect(t, cb){
 }
 
 function main() {
-    var msg = '';
     adapter.subscribeStates('*');
-    connect(function (){
-        benq.on('data', function(chunk) {
-            buffer += chunk.toString();
-            //adapter.log.error('Received: ' + message);
-            if (buffer.length > 50){
-                buffer = '';
-                benq.write('\r');
-            }
-            if (((~buffer.indexOf('\r\n>\u0000\r')) && buffer.length < 6) || ~buffer.indexOf('\r\n>\u0000\r\r\n>\u0000\r\r\n>\u0000')){
-                adapter.log.debug('Set to zero. Length:' + buffer.length);
-                benq.write('\r');
-                buffer = '';
-            }
-            if(chunk.toString() == '\r'){
-                msg = buffer.split('*');
-                if(msg){
-                    for (var i = 0; i < msg.length; i++) {
-                        if(msg[i].length > 5 && msg[i].charAt(msg[i].indexOf('=')+1) !== '?'){
-                            msg = msg[i].substring(0, msg[i].indexOf('\r'));
-                            msg = msg.replace('#', '');
-                        }
-                    }
-                }
-                if(~buffer.indexOf('Illegal format')){
-                    msg = 'Illegal format';
-                }
-                if(~buffer.indexOf('Unsupported item')){
-                    msg = 'Unsupported item';
-                }
-                if(~buffer.indexOf('Block item')){
-                    msg = 'Block item';
-                }
-                if(~buffer.indexOf('VOL')){
-                    msg = 'VOL';
-                }
-                if((msg.length > 5 && msg.charAt(msg.indexOf('=')+1) !== '?') || msg == 'VOL'){
-                    adapter.log.debug('Received message:' + msg);
-                    parse_command(msg);
-                }
-                buffer = '';
-            }
-        });
-
-        benq.on('error', function(err) {
-            adapter.log.error("BenQ: " + err);
-            _connection(false);
-        });
-
-        benq.on('close', function(exception) {
-            adapter.log.info('BenQ disconnected');
-            _connection(false);
-            reconnect();
-        });
-
-    });
+    connect();
 }
 
 function send(cmd, val){
