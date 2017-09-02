@@ -5,19 +5,16 @@ var adapter = utils.adapter('benq');
 var async = require('async');
 
 var net = require('net');
-var benq = net.Socket();
 var benq_commands = require(__dirname + '/admin/commands.json'),
     COMMANDS = benq_commands.models,
     COMMAND_MAPPINGS = benq_commands.command_mapping;
-var connection = false, query_power, rct, buffer = '';
+var connection = false, benq, query_power, rct, buffer = '';
 var permis = false,
     permis_get_cmd = false,
     states = {},
     old_states = {},
     pollcmd = 'vol=?',
     polling_time = 10000;
-var host = '127.0.0.1', port = 23;
-
 
 // is called when adapter shuts down - callback has to be called under any circumstances!
 adapter.on('unload', function (callback) {
@@ -101,6 +98,7 @@ adapter.on('stateChange', function (id, state) {
 });
 
 adapter.on('ready', function () {
+    //adapter.config.model_options = 'W1200';
     if (COMMANDS[adapter.config.model_options]){
         COMMANDS = COMMANDS[adapter.config.model_options].commands;
         main();
@@ -110,12 +108,17 @@ adapter.on('ready', function () {
 
 });
 
+function main() {
+    adapter.subscribeStates('*');
+    connect();
+}
 
 function connect(cb){
-    port = adapter.config.port;
-    host = adapter.config.host;
+    var msg = '';
+    var port = adapter.config.port ? adapter.config.port : 23;
+    var host = adapter.config.host ? adapter.config.host : '192.168.1.53';
     adapter.log.debug('BenQ ' + adapter.config.model_options + ' connect to: ' + host + ':' + port);
-    benq.connect(port, host, function() {
+    benq = net.connect(port, host, function() {
         _connection(true);
         clearInterval(query_power);
         clearInterval(rct);
@@ -128,23 +131,8 @@ function connect(cb){
         }, polling_time);
         //benq.write('\r*error=report#\r');
         //get_commands();
-        if(cb){return cb;}
+        if(cb){cb();}
     });
-}
-
-function reconnect(t, cb){
-    permis = false;
-    benq.destroy();
-    var time = (t) ? t : 30000;
-    rct = setTimeout(function() {
-        connect();
-    }, time);
-}
-
-function main() {
-    connect();
-    var msg = '';
-    adapter.subscribeStates('*');
     benq.on('data', function(chunk) {
         buffer += chunk.toString();
         //adapter.log.error('Received: ' + message);
@@ -160,7 +148,7 @@ function main() {
         if(chunk.toString() == '\r'){
             msg = buffer.split('*');
             if(msg){
-            for (var i = 0; i < msg.length; i++) {
+                for (var i = 0; i < msg.length; i++) {
                     if(msg[i].length > 5 && msg[i].charAt(msg[i].indexOf('=')+1) !== '?'){
                         msg = msg[i].substring(0, msg[i].indexOf('\r'));
                         msg = msg.replace('#', '');
@@ -190,17 +178,27 @@ function main() {
     benq.on('error', function(err) {
         adapter.log.error("BenQ: " + err);
         _connection(false);
-        /*setTimeout(function() {
-            reconnect();
-        }, 10000);*/
+        if (err.code == "ENOTFOUND" || err.code == "ECONNREFUSED" || err.code == "ETIMEDOUT") {
+            benq.destroy();
+        }
     });
 
-    benq.on('close', function(exception) {
-        adapter.log.info('BenQ disconnected');
-        _connection(false);
+    benq.on('close', function(e) {
+        if(connection){
+            adapter.log.info('BenQ disconnected');
+            _connection(false);
+        }
         reconnect();
     });
+}
 
+function reconnect(t, cb){
+    permis = false;
+    benq.destroy();
+    var time = (t) ? t : 30000;
+    rct = setTimeout(function() {
+        connect();
+    }, time);
 }
 
 function send(cmd, val){
@@ -212,7 +210,6 @@ function send(cmd, val){
         benq.write('\r*' + cmd + '=' + val + '#\r');
     }
 }
-
 
 function parse_command(str){
     var cmd, val;
