@@ -109,6 +109,10 @@ adapter.on('ready', function () {
 
 });
 
+function main() {
+    adapter.subscribeStates('*');
+    connect();
+}
 
 function connect(cb){
     var msg = '';
@@ -175,11 +179,16 @@ function connect(cb){
     benq.on('error', function(err) {
         adapter.log.error("BenQ: " + err);
         _connection(false);
+        if (err.code == "ENOTFOUND" || err.code == "ECONNREFUSED" || err.code == "ETIMEDOUT") {
+            benq.destroy();
+        }
     });
 
-    benq.on('close', function(exception) {
-        adapter.log.info('BenQ disconnected');
-        _connection(false);
+    benq.on('close', function(e) {
+        if(connection){
+            adapter.log.info('BenQ disconnected');
+            _connection(false);
+        }
         reconnect();
     });
 }
@@ -193,11 +202,6 @@ function reconnect(t, cb){
     }, time);
 }
 
-function main() {
-    adapter.subscribeStates('*');
-    connect();
-}
-
 function send(cmd, val){
     if (val == undefined){
         adapter.log.debug('Send Command:*' + cmd + '#');
@@ -207,7 +211,6 @@ function send(cmd, val){
         benq.write('\r*' + cmd + '=' + val + '#\r');
     }
 }
-
 
 function parse_command(str){
     var cmd, val;
