@@ -99,7 +99,7 @@ adapter.on('stateChange', function (id, state) {
 });
 
 adapter.on('ready', function () {
-    adapter.config.model_options = 'W1200';
+    //adapter.config.model_options = 'W1200';
     if (COMMANDS[adapter.config.model_options]){
         COMMANDS = COMMANDS[adapter.config.model_options].commands;
         main();

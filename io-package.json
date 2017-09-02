@@ -1,8 +1,16 @@
 {
     "common": {
         "name": "benq",
-        "version": "0.0.6",
+        "version": "0.1.0",
         "news": {
+            "0.1.0": {
+                "en": "Beta realese",
+                "de": "Beta realese",
+                "ru": "Beta realese",
+                "pt": "Beta realese",
+                "fr": "Beta realese",
+                "nl": "Beta realese"
+            },
             "0.0.6": {
                 "en": "Change README",
                 "de": "Change README",
