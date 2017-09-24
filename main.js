@@ -320,6 +320,7 @@ function _connection(state){
     } else {
         connection = false;
         adapter.setState('info.connection', false, true);
+        old_states = {};
     }
 }
 
