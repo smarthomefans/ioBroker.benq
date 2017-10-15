@@ -53,6 +53,9 @@
             "fr": "ioBroker adaptateur modèle",
             "nl": "ioBroker BenQ Adapter"
         },
+        "authors": [
+            "instalator"
+        ],
         "platform": "Javascript/Node.js",
         "mode": "daemon",
         "icon": "benq.png",
@@ -61,7 +64,7 @@
         "keywords": ["benq projector"],
         "readme": "https://github.com/instalator/iobroker.benq/blob/master/README.md",
         "loglevel": "info",
-        "type": "hardware"
+        "type": "multimedia"
     },
     "native": {
         "host": "127.0.0.1",
