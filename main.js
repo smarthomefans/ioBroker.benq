@@ -1,7 +1,7 @@
 "use strict";
 
 var utils =    require(__dirname + '/lib/utils'); // Get common adapter utils
-var adapter = utils.adapter('benq');
+var adapter = utils.Adapter('benq');
 var async = require('async');
 
 var net = require('net');
