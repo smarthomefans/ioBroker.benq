@@ -56,6 +56,7 @@
         "authors": [
             "instalator"
         ],
+        "license": "MIT",
         "platform": "Javascript/Node.js",
         "mode": "daemon",
         "icon": "benq.png",
