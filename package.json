@@ -25,7 +25,8 @@
     "url": "https://github.com/instalator/iobroker.benq"
   },
   "dependencies": {
-    "async": "*"
+    "async": "*",
+    "@iobroker/adapter-core": "^1.0.3"
   },
   "devDependencies": {
     "grunt": "^1.0.1",

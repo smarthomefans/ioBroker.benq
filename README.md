@@ -1,7 +1,7 @@
 ![Logo](admin/benq-logo.png)
 ioBroker BenQ Projector adapter
 =================
-[![NPM version](http://img.shields.io/npm/v/iobroker.benq.svg)](https://www.npmjs.com/package/iobroker.benq)
+![Number of Installations](http://iobroker.live/badges/benq-installed.svg) ![Number of Installations](http://iobroker.live/badges/benq-stable.svg) [![NPM version](http://img.shields.io/npm/v/iobroker.benq.svg)](https://www.npmjs.com/package/iobroker.benq)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.benq.svg)](https://www.npmjs.com/package/iobroker.benq)
 [![Tests](http://img.shields.io/travis/instalator/ioBroker.benq/master.svg)](https://travis-ci.org/instalator/ioBroker.benq)
 
