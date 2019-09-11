@@ -135,7 +135,6 @@ function connect(cb){
     });
     benq.on('data', function(chunk) {
         buffer += chunk.toString();
-        //adapter.log.error('Received: ' + message);
         if (buffer.length > 50){
             buffer = '';
             benq.write('\r');
@@ -145,7 +144,8 @@ function connect(cb){
             benq.write('\r');
             buffer = '';
         }
-        if(chunk.toString() == '\r'){
+        if(chunk.toString().indexOf('\r') >= 0){
+            adapter.log.debug('Received: ' + buffer);
             msg = buffer.split('*');
             if(msg){
                 for (var i = 0; i < msg.length; i++) {
@@ -163,9 +163,6 @@ function connect(cb){
             }
             if(~buffer.indexOf('Block item')){
                 msg = 'Block item';
-            }
-            if(~buffer.indexOf('VOL')){
-                msg = 'VOL';
             }
             if((msg.length > 5 && msg.charAt(msg.indexOf('=')+1) !== '?') || msg == 'VOL'){
                 adapter.log.debug('Received message:' + msg);
@@ -214,12 +211,8 @@ function send(cmd, val){
 function parse_command(str){
     var cmd, val;
     if (!~str.indexOf('Unsupported') && !~str.indexOf('Block') && !~str.indexOf('Illegal')){
-        cmd = str.split('=')[0];
+        cmd = str.split('=')[0].toLowerCase();
         val = str.split('=')[1];
-        if(str == 'VOL'){
-            cmd = 'pow';
-            val = 'off';
-        }
         if (cmd && val){
             val = val_to_bool(val.replace(/\s/g, '').toLowerCase());
             if(!COMMANDS[cmd]){
@@ -230,7 +223,7 @@ function parse_command(str){
                     if(states.pow !== old_states.pow){
                         old_states.pow = states.pow;
                         adapter.log.info(COMMANDS.pow.name + '{cmd:pow, val:' + states.pow + '}');
-                        setObject (COMMANDS.pow.name, true);
+                        setObject(COMMANDS.pow.name, true);
                     }
                     get_commands();
                 }
